@@ -8,7 +8,7 @@ import (
 	"strings"
 	"text/template"
 
-	"gen/pb/gotools/rpc/genrpc/genrpc_proto"
+	"gen/pb/rpc/genrpc/genrpc_proto"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/xinlaini/golibs/log"
