@@ -159,14 +159,14 @@ func main() {
 	} else {
 		makefile, err := ioutil.TempFile("", "Makefile")
 		if err != nil {
-			logger.Fatal("Failed to create temporary Makefile: %s", err)
+			logger.Fatalf("Failed to create temporary Makefile: %s", err)
 		}
 		defer func() {
 			makefile.Close()
 			os.Remove(makefile.Name())
 		}()
 		if _, err := io.Copy(makefile, state.buf); err != nil {
-			logger.Fatal("Failed to write to temporary Makefile: %s", err)
+			logger.Fatalf("Failed to write to temporary Makefile: %s", err)
 		}
 
 		cmd := exec.Command("make", "-f", makefile.Name(), "goal")
