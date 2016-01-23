@@ -26,7 +26,7 @@ type data struct {
 
 func main() {
 	flag.Parse()
-	logger := xlog.NewConsoleLogger()
+	logger := xlog.NewPlainLogger()
 
 	const usage = "usage: genrpc [--out_dir=<OUT_DIR>] service_def_file"
 	if len(flag.Args()) < 1 {

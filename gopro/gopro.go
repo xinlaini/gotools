@@ -136,7 +136,7 @@ func gopro(fullTarget, parentDepFile string, state *walkState) error {
 func main() {
 	flag.Parse()
 
-	logger := xlog.NewConsoleLogger()
+	logger := xlog.NewPlainLogger()
 	usage := fmt.Sprintf("Usage: gopro [--dry_run] path:target")
 
 	if len(flag.Args()) != 1 {
@@ -155,7 +155,7 @@ func main() {
 	}
 
 	if *dryRun {
-		logger.Info("Generated Makefile:\n", string(state.buf.Bytes()))
+		logger.Info(string(state.buf.Bytes()))
 	} else {
 		makefile, err := ioutil.TempFile("", "Makefile")
 		if err != nil {
