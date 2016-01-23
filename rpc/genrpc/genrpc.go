@@ -28,7 +28,7 @@ func main() {
 	flag.Parse()
 	logger := xlog.NewConsoleLogger()
 
-	const usage = "usage: rpcc [--out_dir=<OUT_DIR>] service_def_file"
+	const usage = "usage: genrpc [--out_dir=<OUT_DIR>] service_def_file"
 	if len(flag.Args()) < 1 {
 		logger.Fatal(usage)
 	}
@@ -62,4 +62,5 @@ func main() {
 	if err = t.Execute(out, dot); err != nil {
 		logger.Fatalf("Failed to execute template: %s", err)
 	}
+	logger.Info("Done")
 }

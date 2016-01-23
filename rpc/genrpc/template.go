@@ -10,6 +10,8 @@ type {{.ServiceName}}Service interface {
 {{range .Method}}	{{.Name}}(ctx *rpc.ServerContext, req *{{.RequestProto}}) (*{{.ResponseProto}}, error)
 {{end}}}
 
+var {{.ServiceName}}ServiceType = reflect.TypeOf((*{{.ServiceName}}Service)(nil)).Elem()
+
 type {{.ServiceName}}Client struct {
 	rpcClient *rpc.Client
 }
