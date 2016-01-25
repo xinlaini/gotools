@@ -15,7 +15,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/xinlaini/golibs/log"
 
-	"gen/pb/makepro"
+	"gen/pb/makepro/makepro_proto"
 )
 
 var (
