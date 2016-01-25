@@ -1,5 +1,5 @@
-genrpc_proto:
-	gopro rpc/genrpc:genrpc_proto
+def_proto:
+	gopro rpc:def_proto
 
-genrpc: genrpc_proto
+genrpc: def_proto
 	go build -o ./genrpc	

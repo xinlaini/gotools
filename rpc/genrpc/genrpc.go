@@ -8,7 +8,7 @@ import (
 	"strings"
 	"text/template"
 
-	"gen/pb/rpc/genrpc/genrpc_proto"
+	"gen/pb/rpc/def_proto"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/xinlaini/golibs/log"
@@ -21,7 +21,7 @@ var (
 
 type data struct {
 	ImportProto []string
-	SvcDef      *genrpc.Service
+	SvcDef      *def.Service
 }
 
 func main() {
@@ -38,7 +38,7 @@ func main() {
 	if err != nil {
 		logger.Fatalf("Failed to read %s: ", err)
 	}
-	dot := &data{SvcDef: &genrpc.Service{}}
+	dot := &data{SvcDef: &def.Service{}}
 	if err = proto.UnmarshalText(string(text), dot.SvcDef); err != nil {
 		logger.Fatalf("Failed to unmarshal service definition: %s", err)
 	}
