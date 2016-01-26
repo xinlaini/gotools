@@ -7,6 +7,7 @@ import (
 
 	"golang.org/x/net/context"
 
+	"github.com/golang/protobuf/proto"
 	"github.com/xinlaini/golibs/log"
 	"github.com/xinlaini/golibs/rpc"
 )
@@ -60,11 +61,11 @@ func main() {
 		logger.Errorf("Error: %s", err)
 	}
 	if ctx.Metadata != nil {
-		logger.Infof("Response metadata: %s", ctx.Metadata.String())
+		logger.Infof("Response metadata:\n%s", proto.MarshalTextString(ctx.Metadata))
 	}
 	if responsePB == nil {
 		logger.Info("Response: <nil>")
 	} else {
-		logger.Info("Response:", *responsePB)
+		logger.Infof("Response:\n%s", *responsePB)
 	}
 }
