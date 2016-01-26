@@ -34,9 +34,9 @@ func main() {
 	}
 
 	var err error
-	text, err := ioutil.ReadFile(flag.Arg[0])
+	text, err := ioutil.ReadFile(flag.Arg(0))
 	if err != nil {
-		logger.Fatalf("Failed to read '%s': %s", flag.Arg[0], err)
+		logger.Fatalf("Failed to read '%s': %s", flag.Arg(0), err)
 	}
 	dot := &data{SvcDef: &def.Service{}}
 	if err = proto.UnmarshalText(string(text), dot.SvcDef); err != nil {
