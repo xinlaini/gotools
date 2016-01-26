@@ -29,14 +29,14 @@ func main() {
 	logger := xlog.NewPlainLogger()
 
 	const usage = "usage: genrpc [--out_dir=<OUT_DIR>] service_def_file"
-	if len(flag.Args()) < 1 {
+	if len(flag.Args()) != 1 {
 		logger.Fatal(usage)
 	}
 
 	var err error
-	text, err := ioutil.ReadFile(flag.Args()[0])
+	text, err := ioutil.ReadFile(flag.Arg[0])
 	if err != nil {
-		logger.Fatalf("Failed to read %s: ", err)
+		logger.Fatalf("Failed to read '%s': %s", flag.Arg[0], err)
 	}
 	dot := &data{SvcDef: &def.Service{}}
 	if err = proto.UnmarshalText(string(text), dot.SvcDef); err != nil {
